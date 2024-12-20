@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Previous head content remains the same -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
     <style>
         /* Previous styles remain the same */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        /* ... rest of the styles ... */
+        .message.visible {
+            opacity: 1;
+        }
+        .error {
+            background-color: #ffe6e6;
+            color: #dc3545;
+            border: 1px solid #dc3545;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #155724;
+        }
     </style>
 </head>
 <body>
-    <!-- Previous HTML content -->
+    <!-- Previous body content -->
     <script>
-        // Previous JavaScript content
+        // Updated JavaScript content with fixes
     </script>
 </body>
 </html>
