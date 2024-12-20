@@ -5,16 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent Test</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 50;
+        }
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <nav class="bg-gray-800 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold">Agent Test</a>
-            <div class="flex space-x-4">
+            <div class="flex items-center space-x-4">
                 <a href="index.html" class="hover:text-gray-300">Home</a>
-                <a href="dashboard.html" class="hover:text-gray-300">Dashboard</a>
                 <a href="about.html" class="hover:text-gray-300">About</a>
                 <a href="contact.html" class="hover:text-gray-300">Contact</a>
+                <div id="auth-buttons" class="space-x-2">
+                    <button onclick="openModal('login')" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">Login</button>
+                    <button onclick="openModal('signup')" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded">Sign Up</button>
+                </div>
+                <div id="user-section" class="hidden space-x-2">
+                    <span id="user-welcome" class="text-gray-300"></span>
+                    <a href="dashboard.html" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">Dashboard</a>
+                    <button onclick="handleLogout()" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -22,29 +47,143 @@
     <main class="container mx-auto p-8">
         <div class="text-center py-12 bg-white rounded-lg shadow-md mb-8">
             <h1 class="text-4xl font-bold mb-4">Welcome to Agent Test</h1>
-            <p class="text-xl text-gray-600">A simple demo site for GitHub Pages deployment.</p>
+            <p class="text-xl text-gray-600 mb-8">Your modern web solution for testing and development</p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="openModal('signup')" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all">
+                    Get Started
+                </button>
+                <a href="about.html" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transform hover:scale-105 transition-all">
+                    Learn More
+                </a>
+            </div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-xl font-semibold mb-4">Feature One</h2>
-                <p class="text-gray-600">Description of feature one goes here.</p>
+                <h2 class="text-xl font-semibold mb-4">Easy Integration</h2>
+                <p class="text-gray-600">Seamlessly integrate with your existing projects using our modern API.</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-xl font-semibold mb-4">Feature Two</h2>
-                <p class="text-gray-600">Description of feature two goes here.</p>
+                <h2 class="text-xl font-semibold mb-4">Secure Authentication</h2>
+                <p class="text-gray-600">Industry-standard security with JWT tokens and encrypted passwords.</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-xl font-semibold mb-4">Feature Three</h2>
-                <p class="text-gray-600">Description of feature three goes here.</p>
+                <h2 class="text-xl font-semibold mb-4">Responsive Design</h2>
+                <p class="text-gray-600">Beautiful and functional on all devices with modern UI/UX principles.</p>
             </div>
         </div>
     </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-4">Login</h2>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" name="username" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" name="password" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                </div>
+                <div class="flex justify-between items-center">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Login</button>
+                    <button type="button" onclick="closeModal('login')" class="text-gray-500 hover:text-gray-700">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
+            <form id="signup-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" name="username" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" name="password" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                </div>
+                <div class="flex justify-between items-center">
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Sign Up</button>
+                    <button type="button" onclick="closeModal('signup')" class="text-gray-500 hover:text-gray-700">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <footer class="bg-gray-800 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 Agent Test. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function openModal(type) {
+            document.getElementById(`${type}-modal`).classList.add('active');
+        }
+
+        function closeModal(type) {
+            document.getElementById(`${type}-modal`).classList.remove('active');
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            updateAuthUI(false);
+        }
+
+        function updateAuthUI(isLoggedIn, username = '') {
+            const authButtons = document.getElementById('auth-buttons');
+            const userSection = document.getElementById('user-section');
+            const userWelcome = document.getElementById('user-welcome');
+
+            if (isLoggedIn) {
+                authButtons.classList.add('hidden');
+                userSection.classList.remove('hidden');
+                userWelcome.textContent = `Welcome, ${username}!`;
+            } else {
+                authButtons.classList.remove('hidden');
+                userSection.classList.add('hidden');
+                userWelcome.textContent = '';
+            }
+        }
+
+        // Check authentication status on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
+            if (token && username) {
+                updateAuthUI(true, username);
+            }
+
+            // Demo login functionality
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = e.target.username.value;
+                const password = e.target.password.value;
+                
+                // Demo authentication - in reality, this would be an API call
+                localStorage.setItem('token', 'demo-token');
+                localStorage.setItem('username', username);
+                updateAuthUI(true, username);
+                closeModal('login');
+                window.location.href = 'dashboard.html';
+            });
+
+            // Demo signup functionality
+            document.getElementById('signup-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = e.target.username.value;
+                alert('Account created successfully! Please log in.');
+                closeModal('signup');
+                openModal('login');
+            });
+        });
+    </script>
 </body>
 </html>
