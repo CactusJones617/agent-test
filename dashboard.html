@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Agent Test</title>
+    <title>Dashboard - Agent Test</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -20,9 +20,24 @@
     </nav>
 
     <main class="container mx-auto p-8">
-        <div class="bg-white rounded-lg shadow-md p-8">
-            <h1 class="text-3xl font-bold mb-6">About Us</h1>
-            <p class="text-gray-600 mb-4">This is a demo site to showcase GitHub Pages deployment.</p>
+        <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+            <p class="text-gray-600">Welcome to your dashboard. View your stats below.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-2">Total Tasks</h2>
+                <p class="text-3xl font-bold text-blue-500">12</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-2">Completed</h2>
+                <p class="text-3xl font-bold text-green-500">8</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-2">Pending</h2>
+                <p class="text-3xl font-bold text-yellow-500">4</p>
+            </div>
         </div>
     </main>
 

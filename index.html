@@ -3,17 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Agent Test</title>
+    <title>Agent Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Welcome to Agent Test</h1>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="contact.html">Contact</a>
+<body class="bg-gray-100">
+    <nav class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold">Agent Test</a>
+            <div class="flex space-x-4">
+                <a href="index.html" class="hover:text-gray-300">Home</a>
+                <a href="dashboard.html" class="hover:text-gray-300">Dashboard</a>
+                <a href="about.html" class="hover:text-gray-300">About</a>
+                <a href="contact.html" class="hover:text-gray-300">Contact</a>
+            </div>
+        </div>
     </nav>
-    <main>
-        <p>This is a test page to verify GitHub Pages deployment.</p>
+
+    <main class="container mx-auto p-8">
+        <div class="text-center py-12 bg-white rounded-lg shadow-md mb-8">
+            <h1 class="text-4xl font-bold mb-4">Welcome to Agent Test</h1>
+            <p class="text-xl text-gray-600">A simple demo site for GitHub Pages deployment.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Feature One</h2>
+                <p class="text-gray-600">Description of feature one goes here.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Feature Two</h2>
+                <p class="text-gray-600">Description of feature two goes here.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Feature Three</h2>
+                <p class="text-gray-600">Description of feature three goes here.</p>
+            </div>
+        </div>
     </main>
+
+    <footer class="bg-gray-800 text-white p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Agent Test. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
